@@ -1,14 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>İlk Django Dosyası</title>
-</head>
-<body>
-<h1>Hoş Geldiniz  Django</h1>
-<h3>Karabuk Üniversitesi Bilgisayar Mühendisliği</h3>
-<p>
-    {{text}}
-</p>
-</body>
-</html>
+{% extends "homebase.html" %}
+
+{% block keywoards %} index sayfası anahtar kelimeler{% endblock %}
+{% block description %} index sayfası açıklamalara{% endblock %}
+
+{% block header %}
+    {% include 'header.html' %}
+{% endblock %}
+
+{% block slider %}
+    {% include 'slider.html' %}
+{% endblock %}
+
+{% block body %}
+    {% include 'content.html' %}
+{% endblock %}
