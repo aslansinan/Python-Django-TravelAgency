@@ -1,7 +1,11 @@
 {% extends "homebase.html" %}
-
+{% block title %} {{ setting.title }} {% endblock %}
 {% block keywoards %} index sayfası anahtar kelimeler{% endblock %}
 {% block description %} index sayfası açıklamalara{% endblock %}
+
+    {% block head %}
+        <Link rel='shortcut icon' type='image/x-icon' href='{{setting.icon.url}}' />
+    {% endblock %}
 
 {% block header %}
     {% include 'header.html' %}
