@@ -7,9 +7,8 @@ class ProductImagesInline(admin.TabularInline):
     extra = 5
 
 class CategoryAdmin(admin.ModelAdmin):
-    list_display =['title','status','image_tag']
+    list_display =['title','status','image']
     list_filter = ['status']
-    readonly_fields = ('image_tag',)
 
 class ProductAdmin(admin.ModelAdmin):
     list_display =['title','category','price','amount','image_tag','status']
