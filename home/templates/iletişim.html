@@ -27,8 +27,34 @@
  <div class="section">
      <div class="container">
          <div class="row">
-           {{setting.contact | safe}}
+             <div class="col-md-4">
+               <div class="billing-details">
+                   <div class="section-title">
+                       <h3 class="title">İletişim Formu</h3>
+                   </div>
+                   {% if messages %}
+                        {% for message in messages %}
+                            <div class="alert alert{{message.tags}}" role ="alert">
+                                {{message}}
+                            </div>
+                        {% endfor %}
+                   {% endif %}
+                   <form action="" method="post" class="post-form">
+                       {% csrf_token %}
+                       {{ form.as_p }}
+                       <input type="submit" value="Send FORM">
+                   </form>
+
+               </div>
+           </div>
+             <div class="col-md-8">
+             <div class="section-title">
+                 <h3 class="title"> İletişim Bilgilerimiz</h3>
+             </div>
+             {{setting.contact|safe}}
          </div>
+          </div>
+
      </div>
  </div>
 {% endblock %}
