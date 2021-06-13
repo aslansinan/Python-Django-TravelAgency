@@ -21,7 +21,31 @@
 <section id="ts-features" class="ts-features">
   <div class="container">
     <div class="row">
-        <div class="col-lg-6">
+        <div class="col-md-3">
+        <div class="card">
+            <div class="card-header">
+                Kategoriler
+            </div>
+            <div class="list-group">
+                {% load mptt_tags %}
+                {% recursetree category %}
+                <li class="list-group">
+                    <a href="/category/{{node.id}}/{{node.slug}}">{{ node.title }}</a><span class="badge bg-danger float-right text-white"></span>
+                    {% if not node.is_leaf_node %}
+                        <ul class="children">
+                           {{ children }}
+
+                        </ul>
+                    {% endif %}
+                </li>
+            {% endrecursetree %}
+            </div>
+        </div>
+
+        </div>
+
+        <div class="col-md-9">
+             <div class="col-lg-12">
           <div class="ts-intro">
               <h2 class="into-title">About Us</h2>
               <h3 class="into-sub-title">We deliver landmark projects</h3>
@@ -81,7 +105,7 @@
           </div><!-- Content row 1 end -->
         </div><!-- Col end -->
 
-        <div class="col-lg-6 mt-4 mt-lg-0">
+        <div class="col-lg-12 mt-4 mt-lg-0">
           <h3 class="into-sub-title">Our Values</h3>
           <p>Minim Austin 3 wolf moon scenester aesthetic, umami odio pariatur bitters. Pop-up occaecat taxidermy street art, tattooed beard literally.</p>
 
@@ -133,6 +157,8 @@
           <!--/ Accordion end -->
 
         </div><!-- Col end -->
+        </div>
+
     </div><!-- Row end -->
   </div><!-- Container end -->
 </section><!-- Feature are end -->

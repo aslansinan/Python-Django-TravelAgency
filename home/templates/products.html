@@ -1,0 +1,86 @@
+{% extends "homebase.html" %}
+{% block title %} {{ categorydata.title }} {% endblock %}
+{% block keywoards %} {{categorydata.keywords}}{% endblock %}
+{% block description %}{{categorydata.description}}{% endblock %}
+
+    {% block head %}
+        <Link rel='shortcut icon' type='image/x-icon' href='{{setting.icon.url}}' />
+    {% endblock %}
+
+{% block header %}
+    {% include 'header.html' %}
+{% endblock %}
+{% block sidebar %}
+    {% include 'sidebar.html' %}
+{% endblock %}
+
+{% block content %}
+   <div id="breadcrumb">
+       <div class="container">
+           <ul class="breadcrumb">
+               <li><a href="/">Anasayfa</a> </li>
+               <li><a class="active">{{ categorydata.title }}</a> </li>
+
+           </ul>
+
+       </div>
+   </div>
+
+ <div class="section">
+     <div class="container">
+         <div class="row">
+
+            <section id="main-container" class="main-container pb-2">
+              <div class="container">
+                <div class="row">
+                    <div class="col-md-2">
+                        <div class="card">
+                            <div class="card-header">
+                                Kategoriler
+                            </div>
+                            <div class="list-group">
+                                {% load mptt_tags %}
+                                {% recursetree category %}
+                                <li class="list-group">
+                                    <a href="/category/{{node.id}}/{{node.slug}}">{{ node.title }}</a><span class="badge bg-danger float-right text-white"></span>
+                                    {% if not node.is_leaf_node %}
+                                        <ul class="children">
+                                           {{ children }}
+
+                                        </ul>
+                                    {% endif %}
+                                </li>
+                            {% endrecursetree %}
+                            </div>
+                        </div>
+
+              </div>
+
+                    <div class="col-md-10">
+                        <h2>{{categorydata.title}} Ürünleri</h2>
+                        <hr>
+                          {% for rs in products %}
+                       <div class="col-lg-9 col-md-9 mb-5">
+                    <div class="ts-service-box">
+                        <div class="ts-service-image-wrapper">
+                          <img loading="lazy"  class="w-100" src="{{rs.image.url}}" alt="service-image">
+                        </div>
+                        <div class="d-flex">
+                          <div class="ts-service-info">
+                              <h3 class="service-box-title"><a href="/category/{{node.id}}/{{node.slug}}">{{ rs.price }}</a></h3>
+                              <h3>{{ rs.title }}</h3>
+                              <p>You have ideas, goals, and dreams. We have a culturally diverse, forward thinking team looking for talent like. Lorem ipsum dolor suscipit.</p>
+                              <a class="learn-more d-inline-block" href="service-single.html" aria-label="service-details"><i class="fa fa-caret-right"></i> Learn more</a>
+                          </div>
+                        </div>
+                    </div><!-- Service1 end -->
+                  </div><!-- Col 1 end -->
+                          {% endfor %}
+                     </div>
+                </div><!-- Main row end -->
+              </div><!-- Conatiner end -->
+            </section><!-- Main container end -->
+         </div>
+     </div>
+ </div>
+{% endblock %}
