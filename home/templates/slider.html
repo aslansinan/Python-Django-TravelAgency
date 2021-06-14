@@ -1,7 +1,7 @@
 {% load static %}
 <div class="banner-carousel banner-carousel-1 mb-0">
     {% for rs in sliderdata %}
-  <div class="banner-carousel-item" style="background-image:url({{ rs.image.url }})">
+  <div  class="banner-carousel-item" style="background-image:url({{ rs.image.url }})">
     <div class="slider-content">
         <div class="container h-100">
           <div class="row align-items-center h-100">
@@ -9,7 +9,7 @@
                 <h3 class="slide-title" data-animation-in="slideInLeft">{{ rs.title }}</h3>
                 <h4 class="slide-sub-title" data-animation-in="slideInRight">{{rs.description}}</h4>
                 <p data-animation-in="slideInLeft" data-duration-in="1.2">
-                    <a href="/product/{{rs.id}}/{{rs.title}}" class="slider btn btn-primary">Servisler</a>
+                    <a href="/product/{{rs.id}}/{{rs.slug}}" class="slider btn btn-primary">Satın Al</a>
                     <a href="contact.html" class="slider btn btn-primary border">İletişime Geç</a>
                 </p>
               </div>
