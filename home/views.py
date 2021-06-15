@@ -1,3 +1,5 @@
+import json
+
 from django.core.checks import messages
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
@@ -76,7 +78,7 @@ def product_search(request):
         if form.is_valid():
             category=Category.objects.all()
             query=  form.cleaned_data['query']
-            products =Product.objects.filter(title__icontains=query)
+            products = Product.objects.filter(title__icontains=query)
             context ={
                 'products':products,
                 'category':category,
@@ -84,3 +86,17 @@ def product_search(request):
             return render(request,'product_search.html',context)
 
     return HttpResponseRedirect('/')
+def search_places(request):
+  if request.is_ajax():
+    q = request.GET.get('term', '')
+    places = Product.objects.filter(city__icontains=q)
+    results = []
+    for rs in places:
+      place_json = {}
+      place_json = rs.title
+      results.append(place_json)
+    data = json.dumps(results)
+  else:
+    data = 'fail'
+  mimetype = 'application/json'
+  return HttpResponse(data, mimetype)

@@ -1,4 +1,9 @@
 {% load static %}
+<!-- jQuery !-->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"> </script>
+<!-- jQuery UI !-->
+<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
 <div id="top-bar" class="top-bar">
         <div class="container">
           <div class="row">
@@ -35,6 +40,23 @@
     </div>
     <!--/ Topbar end -->
 <!-- Header start -->
+<script>
+                      $(function() {
+                        $("#places").autocomplete({
+                          source: "/api/get_places/",
+                          select: function (event, ui) { //item selected
+                            AutoCompleteSelectHandler(event, ui)
+                          },
+                          minLength: 2,
+                        });
+                      });
+
+                      function AutoCompleteSelectHandler(event, ui)
+                      {
+                        var selectedObj = ui.item;
+                      }
+
+              </script>
 <header id="header" class="header-one">
   <div class="bg-white">
     <div class="container">
@@ -45,16 +67,31 @@
                   <img loading="lazy" src="{% static 'images/logo.png'%}" alt="Constra">
                 </a>
             </div><!-- logo end -->
-            <div class="logo col-lg-3 text-center text-lg-left mb-3 mb-md-5 mb-lg-0">
+              <div class="logo col-lg-4 text-center text-lg-left mb-3 mb-md-5 mb-lg-0">
                     <form action="/search/" method="post">
                         {% csrf_token %}
-                        <input name="query" class="input search-input" type="text" placeholder="Enter your keyword">
+                        <input name="query" id="places" class="input search-input" type="text" placeholder="Enter your keyword">
+                                {% load mptt_tags %}
+                                    <select name="category_id" class="input search">
+                                        <option value="0">All Categories</option>
+                                        {% recursetree category %}
+                                             {% if  node.is_leaf_node %}
+                                                <option value="{{node.id}}">{{node.title}}</option>
+                                             {% endif %}
+                                             {% if not node.is_leaf_node %}
+                                                <optgroup label="{{ node.title }}">
+                                                     {{ children }}
+                                                </optgroup>
+                                              {% endif %}
+                                        {% endrecursetree %}
+                                    </select>
+
                         <button class="search-btn"><i class="fa fa-search"></i> </button>
                     </form>
             </div>
-            <div class="col-lg-6 header-right">
-                <ul class="top-info-box">
-                  <li>
+              <div class="col-lg-3 header-right">
+                   <ul class="top-info-box">
+                       <li>
                     <div class="info-box">
                       <div class="info-box-content">
                           <p class="info-box-title">Call Us</p>
@@ -62,7 +99,7 @@
                       </div>
                     </div>
                   </li>
-                  <li>
+                        <li>
                     <div class="info-box">
                       <div class="info-box-content">
                           <p class="info-box-title">Email Us</p>
@@ -70,6 +107,11 @@
                       </div>
                     </div>
                   </li>
+                   </ul>
+              </div>
+              <div class="col-lg-2 header-right">
+                <ul class="top-info-box">
+
                   <li class="last">
                     <div class="info-box last">
                       <div class="info-box-content">
