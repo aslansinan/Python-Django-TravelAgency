@@ -1,3 +1,4 @@
+from django.contrib.auth.models import User
 from django.db import models
 
 # Create your models here.
@@ -5,7 +6,7 @@ from django.utils.safestring import mark_safe
 from ckeditor_uploader.fields import  RichTextUploadingField
 from mptt.fields import TreeForeignKey
 from mptt.models import MPTTModel
-
+from django.forms import ModelForm
 
 class Category(MPTTModel):
     STATUS= (
@@ -79,3 +80,25 @@ class Images(models.Model):
 
     image_tag.short_description = 'Image'
 
+class Comment(models.Model):
+    STATUS= (
+        ('New', 'Yeni'),
+        ('True', 'Evet'),
+        ('False', 'Hayır')
+    )
+    product = models.ForeignKey(Product,on_delete=models.CASCADE)
+    user = models.ForeignKey(User,on_delete=models.CASCADE)
+    subject = models.CharField(max_length=255,blank=True)
+    comment = models.TextField(max_length=255, blank=True)
+    rate =models.IntegerField(blank=True)
+    status= models.CharField(max_length=10,choices=STATUS,default='New')
+    ip=models.CharField(blank=True,max_length=20)
+    create_at = models.DateTimeField(auto_now_add=True)
+    update_at =models.DateTimeField(auto_now=True)
+    def __str__(self):
+        return  self.subject
+
+class CommentForm(ModelForm):
+    class Meta:
+        model = Comment
+        fields =['subject','comment','rate']
