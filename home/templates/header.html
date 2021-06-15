@@ -7,8 +7,7 @@
                     <li><i class="fas fa-map-marker-alt"></i> <p class="info-text">9051 Constra Incorporate, USA</p>
                     </li>
                 </ul>
-              </div>
-              <!--/ Top info end -->
+              </div>   <!--/ Top info end -->
 
               <div class="col-lg-4 col-md-4 top-social text-center text-md-right">
                 <ul class="list-unstyled">
@@ -46,8 +45,14 @@
                   <img loading="lazy" src="{% static 'images/logo.png'%}" alt="Constra">
                 </a>
             </div><!-- logo end -->
-
-            <div class="col-lg-9 header-right">
+            <div class="logo col-lg-3 text-center text-lg-left mb-3 mb-md-5 mb-lg-0">
+                    <form action="/search/" method="post">
+                        {% csrf_token %}
+                        <input name="query" class="input search-input" type="text" placeholder="Enter your keyword">
+                        <button class="search-btn"><i class="fa fa-search"></i> </button>
+                    </form>
+            </div>
+            <div class="col-lg-6 header-right">
                 <ul class="top-info-box">
                   <li>
                     <div class="info-box">
