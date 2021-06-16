@@ -1,0 +1,61 @@
+{% extends "homebase.html" %}
+{% block title %} {{ setting.title }} {% endblock %}
+{% block keywoards %} index sayfası anahtar kelimeler{% endblock %}
+{% block description %} index sayfası açıklamalara{% endblock %}
+
+    {% block head %}
+        <Link rel='shortcut icon' type='image/x-icon' href='{{setting.icon.url}}' />
+    {% endblock %}
+
+{% block header %}
+    {% include 'header.html' %}
+{% endblock %}
+
+
+{% block content %}
+   <div id="breadcrumb">
+       <div class="container">
+           <ul class="breadcrumb">
+               <li><a href="/">Anasayfa</a> </li>
+               <li><a class="active">login</a> </li>
+
+           </ul>
+
+       </div>
+   </div>
+
+ <div class="section">
+     <div class="container">
+         <div class="row">
+             <div class="col-md-12">
+               <div class="billing-details">
+                   <div class="section-title">
+                       <h3 class="title">Login Formu</h3>
+                   </div>
+                   {% if messages %}
+                        {% for message in messages %}
+                            <div class="alert alert{{message.tags}}" role ="alert">
+                                {{message}}
+                            </div>
+                        {% endfor %}
+                   {% endif %}
+                   <form action="" method="post" class="post-form">
+                       {% csrf_token %}
+                       <div class="form-group">
+                            <label>User Name</label>
+                             <input class="form-control form-control-name" name="username"  placeholder="username" type="text" required>
+                        </div>
+                         <div class="form-group">
+                            <label>Password</label>
+                            <input class="form-control form-control-password" name="password" placeholder="password" type="password"
+                            required>
+                         </div>
+                       <input type="submit" value="Login">
+                   </form>
+
+               </div>
+           </div>
+         </div>
+     </div>
+ </div>
+{% endblock %}

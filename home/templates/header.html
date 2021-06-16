@@ -89,7 +89,7 @@
                         <button class="search-btn"><i class="fa fa-search"></i> </button>
                     </form>
             </div>
-              <div class="col-lg-3 header-right">
+              <div class="col-lg-2 header-right">
                    <ul class="top-info-box">
                        <li>
                     <div class="info-box">
@@ -109,20 +109,29 @@
                   </li>
                    </ul>
               </div>
-              <div class="col-lg-2 header-right">
-                <ul class="top-info-box">
+              <div class="col-lg-3 pull-right">
+                <ul class="nav navbar-nav mr-auto">
+                          <li class="nav-item dropdown">
+                               {% if user.id is not None %}
+                                <div class="nav-link dropdown-toggle" data-toggle="dropdown">
+                                <strong class="text-uppercase">{{user}}<i class="fa fa-angle-down"></i></strong>
+                                </div>
+                              {% endif %}
+                              {% if user.id is  None %}
 
-                  <li class="last">
-                    <div class="info-box last">
-                      <div class="info-box-content">
-                          <p class="info-box-title">Global Certificate</p>
-                          <p class="info-box-subtitle">ISO 9001:2017</p>
-                      </div>
-                    </div>
-                  </li>
-                  <li class="header-get-a-quote">
-                    <a class="btn btn-primary" href="contact.html">Get A Quote</a>
-                  </li>
+                                    <a href="/login" class="text-uppercase">Login</a> / <a href="/join/" class="text-uppercase">Join</a>
+
+                              {% endif %}
+                              <ul class="dropdown-menu" role="menu">
+                                <li><a href="#"><i class="fa fa-user-o"></i> My Account</a></li>
+                                <li><a href="#"><i class="fa fa-heart-o"></i> My Favorits" </a></li>
+                                <li><a href="#"><i class="fa fa-exchange"></i>My Orders </a></li>
+                                <li><a href="#"><i class="fa fa-check"></i>My Comments </a></li>
+                                <li><a href="/logout/"><i class="fa fa-unlock-alt"></i>Logout</a></li>
+
+                            </ul>
+
+                    </li>
                 </ul><!-- Ul end -->
             </div><!-- header right end -->
           </div><!-- logo area end -->

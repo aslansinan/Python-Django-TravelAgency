@@ -32,6 +32,8 @@ urlpatterns = [
     path('product/<int:id>/<slug:slug>/', views.product_detail, name='product_detail'),
     path('search/',views.product_search,name='product_search'),
     path('search_places/', views.search_places, name='search_places'),
+    path('logout/', views.logout_view, name='logout_view'),
+    path('login/', views.login_view, name='login_view'),
 ]
 if settings.DEBUG: #new
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
