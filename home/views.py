@@ -6,7 +6,7 @@ from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
 # Create your views here.
 from home.forms import SearchForm, SignUpForm
-from home.models import Setting, ContactForm, ContactFormMessage
+from home.models import Setting, ContactForm, ContactFormMessage, UserProfile
 from product.models import Product, Category, Images, Comment
 
 
@@ -128,8 +128,12 @@ def signup_view(request):
             form.save()
             username = form.cleaned_data.get['username']
             password = form.cleaned_data.get['password1']
-            user = authenticate( username=username, password=password)
+            user = authenticate(username=username, password=password)
             login(request, user)
+            current_user = request.user
+            data=UserProfile()
+            data.user_id=current_user.id
+            data.save()
             return HttpResponseRedirect('/')
 
 
@@ -138,6 +142,5 @@ def signup_view(request):
     context = {
         'category': category,
         'form': form,
-
     }
     return render(request, 'signup.html', context)
