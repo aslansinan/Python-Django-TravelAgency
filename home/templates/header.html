@@ -113,8 +113,13 @@
                 <ul class="nav navbar-nav mr-auto">
                           <li class="nav-item dropdown">
                                {% if user.id is not None %}
+
                                 <div class="nav-link dropdown-toggle" data-toggle="dropdown">
-                                <strong class="text-uppercase">{{user}}<i class="fa fa-angle-down"></i></strong>
+                                    <div class="">
+                                        <img style="height:70px; width:70px;" src="{{profile.image.url}}">
+
+                                    <strong class="text-uppercase">{{user}}<i class="fa fa-angle-down"></i></strong>
+                                  </div>
                                 </div>
                               {% endif %}
                               {% if user.id is  None %}

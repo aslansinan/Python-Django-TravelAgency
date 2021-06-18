@@ -25,6 +25,7 @@ urlpatterns = [
     path('referanslar', views.referanslar, name='referanslar'),
     path('iletişim', views.iletişim, name='iletişim'),
     path('product/', include('product.urls')),
+    path('user/', include('user.urls')),
     path('home/', include('home.urls')),
     path('admin/', admin.site.urls),
     path('ckeditor/', include('ckeditor_uploader.urls')),
