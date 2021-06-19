@@ -8,15 +8,19 @@ from django.http import HttpResponse, HttpResponseRedirect
 from home.forms import SearchForm, SignUpForm
 from home.models import Setting, ContactForm, ContactFormMessage, UserProfile
 from product.models import Product, Category, Images, Comment
+from reservation.models import ReservationCart
 
 
 def index(request):
+    current_user = request.user
     setting = Setting.objects.get(pk=1)
     sliderdata= Product.objects.all()[:4]
     category=Category.objects.all()
     dayproducts=Product.objects.all()[:3]
     lastproducts=Product.objects.all().order_by('-id')[:3]
     randomproducts=Product.objects.all().order_by('?')[:3]
+    request.session['cart_items'] = ReservationCart.objects.filter(user_id=current_user.id).count()
+
     context = {'setting': setting,
                'page':'home',
                'category':category,
