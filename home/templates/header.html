@@ -111,33 +111,31 @@
               </div>
               <div class="col-lg-3 pull-right">
                 <ul class="nav navbar-nav mr-auto">
-                          <li class="nav-item dropdown">
+                          <li class="nav-item dropdown active">
                                {% if user.id is not None %}
-
                                 <div class="nav-link dropdown-toggle" data-toggle="dropdown">
                                     <div class="">
                                         <img style="height:70px; width:70px;" src="{{profile.image.url}}">
-
                                     <strong  class="text-uppercase">{{user}}<i class="fa fa-angle-down"></i></strong>
                                   </div>
                                 </div>
                               {% endif %}
                               {% if user.id is  None %}
-
-                                    <a href="/login" class="text-uppercase">Login</a> / <a href="/signup/" class="text-uppercase">Sign Up</a>
-
+                                  <a href="/login" class="text-uppercase">Login</a> / <a href="/signup/" class="text-uppercase">Sign Up</a>
                               {% endif %}
-                              <ul class="dropdown-menu" role="menu">
-                                <li><a href="/user/"><i class="fa fa-user-o"></i> My Account</a></li>
-                                <li><a href="#"><i class="fa fa-heart-o"></i> My Favorits" </a></li>
-                                <li><a href="#"><i class="fa fa-exchange"></i>My Orders </a></li>
-                                <li><a href="#"><i class="fa fa-check"></i>My Comments </a></li>
-                                <li><a href="/logout/"><i class="fa fa-unlock-alt"></i>Logout</a></li>
+                                  <ul class="dropdown-menu" role="menu">
+                                    <li><a href="/user/"><i class="fa fa-user-o"></i> My Account</a></li>
+                                    <li><a href="/logout/"><i class="fa fa-unlock-alt"></i>Logout</a></li>
 
-                            </ul>
+                                  </ul>
 
                     </li>
                 </ul><!-- Ul end -->
+                <ul>
+                      <li class="dropdown ">
+                       <a href="/reservationcart"><strong>My Reservations</strong></a>
+                      </li>
+                  </ul>
             </div><!-- header right end -->
           </div><!-- logo area end -->
 

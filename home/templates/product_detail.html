@@ -57,9 +57,24 @@
               <h4 class="entry-title">
                fiyat:{{ product.price }}
                  </h4>
-              <span >Adet</span>
-              <input class="input" type="number" min="0" max="{{product.amount}}" value="1">
-              <br>
+
+              {% if messages %}
+                            {% for message in messages %}
+                                <div class="alert alert{{message.tags}}" role ="alert">
+                                    {{message}}
+                                </div>
+                            {% endfor %}
+              {% endif %}
+              <form action="/reservation/addtocart/{{product.id}}" method="post">
+                {% csrf_token %}
+                <div class="input">
+                    <span class="text-uppercase">Adet : </span>
+                    <input name="quantity" class="input" type="number" min="0" max="{{product.amount}}" value="1">
+                    <br>
+                </div>
+                  <button type="submit" class="primary-btn"><i class="fa fa-shopping-cart"></i> Add to Chart</button>
+              </form>
+
             </div><!-- header end -->
 
             <div class="entry-content">
