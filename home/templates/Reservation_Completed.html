@@ -1,0 +1,58 @@
+{% extends "homebase.html" %}
+{% block title %}Reservation Cart{% endblock %}
+{% block keywoards %}{{categorydata.keywords}}{% endblock %}
+{% block description %} {{categorydata.description}}{% endblock %}
+
+    {% block head %}
+        <Link rel='shortcut icon' type='image/x-icon' href='{{setting.icon.url}}' />
+    {% endblock %}
+
+{% block header %}
+    {% include 'header.html' %}
+{% endblock %}
+
+
+{% block content %}
+   <div class="banner-text" >
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb justify-content-right">
+                      <li class="breadcrumb-item"><a href="#">Anasayfa</a></li>
+                      <li class="breadcrumb-item active" aria-current="page">Reservation Complated </li>
+                    </ol>
+                </nav>
+  </div><!-- Banner text end -->
+
+ <div class="section">
+     <div class="container">
+
+             <div  class="row">
+                 <div class="col-md-12">
+                    <div class="order-summary clearfix">
+                        <div class="section-title">
+                            <h3 class="title">Reservation Complated</h3>
+                        </div>
+                        <hr>
+                        <h2>Dear {{ user }} </h2>
+                        <hr>
+                        <h3>Your reservation is completed</h3>
+                        <h3>Reservation Code : {{ reservationcode }}</h3>
+                        <h3>Thank You</h3>
+                        <hr>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+
+            </div>
+    <!-- End Cart -->
+
+     </div>
+
+ </div>
+
+{% endblock %}
