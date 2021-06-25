@@ -1,0 +1,64 @@
+{% extends "homebase.html" %}
+{% block title %} {{ profile.user_name }} Orders {% endblock %}
+{% block keywoards %} index sayfası anahtar kelimeler{% endblock %}
+{% block description %} index sayfası açıklamalara{% endblock %}
+
+    {% block head %}
+        <Link rel='shortcut icon' type='image/x-icon' href='{{setting.icon.url}}' />
+    {% endblock %}
+
+{% block header %}
+    {% include 'header.html' %}
+{% endblock %}
+
+
+{% block content %}
+   <div id="breadcrumb">
+       <div class="container">
+           <ul class="breadcrumb">
+               <li><a href="/">Anasayfa</a> </li>
+               <li><a class="active">User Orders</a> </li>
+
+           </ul>
+
+       </div>
+   </div>
+
+ <div class="section">
+     <div class="container">
+         <div class="row">
+                 <div class="col-md-3">
+                {% include "user_panel.html" %}
+                </div>
+               <div class="col-md-9">
+                  <div class="section-title">
+                 <h3 class="title">  User Order List</h3>
+                 </div>
+                   <table style="width:100%">
+                      <tr>
+                          <th>Id </th>
+                          <th>First Name </th>
+                          <th>Last Name </th>
+                          <th>Total </th>
+                          <th>Status </th>
+                          <th>Date </th>
+                          <th>Detail </th>
+                      </tr>
+                       {% for rs in orders %}
+                      <tr>
+                           <td>{{ rs.id }}</td>
+                           <td>{{ rs.first_name }}</td>
+                           <td>{{ rs.last_name }}</td>
+                           <td>{{ rs.total }}</td>
+                           <td>{{ rs.status }}</td>
+                           <td>{{ rs.create_at }}</td>
+                           <td><a class=" btn btn-primary" href="/user/orderdetail/{{ rs.id }}">Detail</a></td>
+                      </tr>
+                        {% endfor %}
+                </table>
+                 </div>
+         </div>
+
+     </div>
+ </div>
+{% endblock %}

@@ -8,6 +8,7 @@ from django.shortcuts import render
 # Create your views here.
 from home.models import UserProfile
 from product.models import Category
+from reservation.models import Rezervation, RezervationProduct
 from user.forms import UserUpdateForm, ProfileUpdateForm
 
 
@@ -57,3 +58,27 @@ def change_password(request):
         form = PasswordChangeForm(request.user)
         return render(request, 'change_password.html', {'form': form,'category': category
                        })
+
+
+@login_required(login_url='/login') # Check login
+def orders(request):
+    category = Category.objects.all()
+    current_user = request.user
+    orders=Rezervation.objects.filter(user_id=current_user.id)
+    context = {'category': category,
+               'orders': orders,
+               }
+    return render(request, 'user_orders.html', context)
+
+@login_required(login_url='/login') # Check login
+def orderdetail(request,id):
+    category = Category.objects.all()
+    current_user = request.user
+    order = Rezervation.objects.get(user_id=current_user.id, id=id)
+    orderitems = RezervationProduct.objects.filter(reservation_id=id)
+    context = {
+        'category': category,
+        'order': order,
+        'orderitems': orderitems,
+    }
+    return render(request, 'user_order_detail.html', context)

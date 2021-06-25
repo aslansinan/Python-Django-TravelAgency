@@ -1,0 +1,102 @@
+{% extends "homebase.html" %}
+{% block title %} {{ profile.user_name }} Order Detail{% endblock %}
+{% block keywoards %} index sayfası anahtar kelimeler{% endblock %}
+{% block description %} index sayfası açıklamalara{% endblock %}
+
+    {% block head %}
+        <Link rel='shortcut icon' type='image/x-icon' href='{{setting.icon.url}}' />
+    {% endblock %}
+
+{% block header %}
+    {% include 'header.html' %}
+{% endblock %}
+
+
+{% block content %}
+   <div id="breadcrumb">
+       <div class="container">
+           <ul class="breadcrumb">
+               <li><a href="/">Anasayfa</a> </li>
+               <li><a class="active">User Order Detail</a> </li>
+
+           </ul>
+
+       </div>
+   </div>
+
+ <div class="section">
+     <div class="container">
+         <div class="row">
+                 <div class="col-md-3">
+                {% include "user_panel.html" %}
+                </div>
+               <div class="col-md-9">
+                  <div class="section-title">
+                      <h3 class="title">Reservation Shopping Informations</h3>
+                         <table style="width:100%">#burda
+                              <tr>
+                                <th>Name Surname</th>
+                                <td>{{user}}</td>
+                              </tr>
+                              <tr>
+                                <th>Phone</th>
+                                <td>{{user.phone}}</td>
+                              </tr>
+                              <tr>
+                                  <th>Address</th>
+                                  <td>{{rezervation.address}}</td>
+                              </tr>
+                              <tr>
+                                  <th>City</th>
+                                  <td>{{reservation.city}}</td>
+                              </tr>
+                              <tr>
+                                <th>Country</th>
+                                <td>{{rezervations.country}}</td>
+                             </tr>
+                              <tr>
+                                <th>Status</th>
+                                <td>{{reservations.status}}</td>
+                             </tr>
+                              <tr>
+                                <th>Country</th>
+                                <td>{{rezervation.create_at}}</td>
+                             </tr>
+                              <tr>
+                                <th>Shipping</th>
+                                <td>{{rezervation.adminote}}</td>
+                             </tr>
+                        </table>
+                     <h3 class="title">  User Order List</h3>
+                         </div>
+                           <table style="width:100%">
+                              <tr>
+                                  <th>Id </th>
+                                  <th>Product Name </th>
+                                  <th>Price </th>
+                                  <th>Quantity </th>
+                                  <th>Amount </th>
+                                  <th>Status </th>
+                                  <th>Date </th>
+
+                              </tr>
+                               {% for rs in orderitems %}
+                              <tr>
+                                   <td><a href="/product/{{rs.product_id }}/{{rs.product.slug}}">
+                                       <img src="{{ rs.product.image.url }}" height="80" >
+                                   </a></td>
+                                   <td>{{ rs.product.title }}</td>
+                                   <td>{{ rs.price }}</td>
+                                   <td>{{ rs.quantity }}</td>
+                                   <td>{{ rs.amoun }}</td>
+                                   <td>{{ rs.status }}</td>
+                                   <td>{{ rs.create_at }}</td>
+                              </tr>
+                                {% endfor %}
+                        </table>
+                         </div>
+         </div>
+
+     </div>
+ </div>
+{% endblock %}
