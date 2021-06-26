@@ -1,0 +1,53 @@
+{% extends "homebase.html" %}
+{% block title %}Frequently Asked Questions {% endblock %}
+{% block keywoards %}{% endblock %}
+{% block description %} {% endblock %}
+
+    {% block head %}
+        <!-- jQuery !-->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"> </script>
+        <!-- jQuery UI !-->
+        <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+        <Link rel='shortcut icon' type='image/x-icon' href='{{setting.icon.url}}' />
+        <script>
+            $(function() {
+                $( "#accordion" ).accordion();
+            });
+         </script>
+    {% endblock %}
+
+    {% block header %}
+        {% include 'header.html' %}
+    {% endblock %}
+
+
+{% block content %}
+   <div class="banner-text" >
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb justify-content-right">
+                      <li class="breadcrumb-item"><a href="#">Anasayfa</a></li>
+                      <li class="breadcrumb-item active" aria-current="page">Frequently Asked Questions  </li>
+                    </ol>
+                </nav>
+  </div><!-- Banner text end -->
+
+ <div class="section">
+     <div class="container">
+         <div class="row">
+           <div id="accordion">
+                    {% for rs in faq %}
+                        <h3>{{ rs.question }}</h3>
+                        <div>
+                            <p>
+                                {{ rs.answer | safe }}
+                            </p>
+                        </div>
+                    {% endfor %}
+                </div>
+         </div>
+     </div>
+
+ </div>
+
+{% endblock %}

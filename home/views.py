@@ -6,7 +6,7 @@ from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
 # Create your views here.
 from home.forms import SearchForm, SignUpForm
-from home.models import Setting, ContactForm, ContactFormMessage, UserProfile
+from home.models import Setting, ContactForm, ContactFormMessage, UserProfile, FAQ
 from product.models import Product, Category, Images, Comment
 from reservation.models import ReservationCart
 
@@ -148,3 +148,13 @@ def signup_view(request):
         'form': form,
     }
     return render(request, 'signup.html', context)
+
+
+def faq(request):
+    category = Category.objects.all()
+    faq = FAQ.objects.all().order_by("ordernumber")
+    context = {
+        'faq': faq,
+        'category': category,
+    }
+    return render(request, 'faq.html', context)
