@@ -15,6 +15,22 @@
 {% endblock %}
 
 {% block content %}
+    <div id="banner-area"  style="background-color:#23282d; height:40px!important;position:relative; color:fff;background-size:cover;background-position:50% 50%;">
+  <div class="banner-text">
+          <div class="col-lg-12">
+              <div class="banner-heading">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb justify-content-center">
+                      <li class="breadcrumb-item"><a href="#">Home</a></li>
+                       <li class="breadcrumb-item"><a href="/category/{{ product.category_id}}/{{ product.category.slug}}">{{ categorydata.title }} </a></li>
+
+                    </ol>
+                </nav>
+              </div>
+          </div><!-- Col end -->
+  </div><!-- Banner text end -->
+</div><!-- Banner area end -->
+
    <div id="breadcrumb">
        <div class="container">
            <ul class="breadcrumb">

@@ -10,16 +10,15 @@
                     <div class="list-group">
                         {% load mptt_tags %}
                         {% recursetree category %}
-                        <li class="list-group">
-                            <a href="/category/{{node.id}}/{{node.slug}}">{{ node.title }}</a><span class="badge bg-danger float-right text-white"></span>
-                            {% if not node.is_leaf_node %}
-                                <ul class="children">
-                                   {{ children }}
-
-                                </ul>
-                            {% endif %}
-                        </li>
-                    {% endrecursetree %}
+                            <li class="list-group">
+                                 <a href="/category/{{node.id}}/{{node.slug}}">{{ node.title }}</a><span class="badge bg-danger float-right text-white"></span>
+                                   {% if not node.is_leaf_node %}
+                                        <ul class="children">
+                                             {{ children }}
+                                        </ul>
+                                     {% endif %}
+                           </li>
+                        {% endrecursetree %}
                     </div>
                 </div>
 
@@ -27,7 +26,7 @@
           <div class="col-md-9">
                   <div class="row text-center">
                         <div class="col-12">
-                          <h6  class="section-sub-title">Günün Ürünleri</h6>
+                          <h6  class="section-sub-title">En Yeni Seyehat Fırsatları</h6>
                         </div>
                   </div>
         <!--/ Title row end -->
@@ -38,7 +37,7 @@
                           <div class="latest-post">
                               <div class="latest-post-media">
                                 <a href="/product/{{rs.id}}/{{rs.slug}}" class="latest-post-img">
-                                    <img loading="lazy" class="img-fluid" src="{{ rs.image.url }}" alt="img">
+                                    <img style="height:300px; width:300px;" loading="lazy" class="img-fluid" src="{{ rs.image.url }}" alt="img">
                                 </a>
                               </div>
                               <div class="post-body">
@@ -65,43 +64,7 @@
 
                <div class="row text-center">
                         <div class="col-12">
-                          <h6 class="section-sub-title">Tüm Ürünler</h6>
-                        </div>
-                  </div>
-        <!--/ Title row end -->
-
-                    <div class="row">
-                         {% for rs in randomproducts %}
-                        <div class="col-lg-4 col-md-6 mb-4">
-                          <div class="latest-post">
-                              <div class="latest-post-media">
-                                <a href="/product/{{rs.id}}/{{rs.slug}}" class="latest-post-img">
-                                    <img loading="lazy" class="img-fluid" src="{{ rs.image.url }}" alt="img">
-                                </a>
-                              </div>
-                              <div class="post-body">
-                                <h4 class="post-title">
-                                    <a href="news-single.html" class="d-inline-block">{{ rs.title }}</a>
-                                </h4>
-                                <div class="latest-post-meta">
-                                    <span class="post-item-date">
-                                      <i class="fa fa-clock-o"></i> {{ rs.price }}
-                                    </span>
-                                </div>
-                                   <div>
-                                       <button class="icon-btn"><i class="fa fa-heart"></i></button>
-                                       <a href="/reservation/addtocart/{{rs.id}}" class="icon-btn"><i class="fa fa-shopping-cart"></i></a>
-                                   </div>
-                              </div>
-                          </div><!-- Latest post end -->
-                        </div><!-- 1st post col end -->
-                    {% endfor %}
-
-                    </div>
-
-               <div class="row text-center">
-                        <div class="col-12">
-                          <h6 class="section-sub-title">Sizin İçin Öneriler</h6>
+                          <h6 class="section-sub-title">Sizin İçin Önerilen Seyehat Fırsatları</h6>
                         </div>
                   </div>
         <!--/ Title row end -->
@@ -112,7 +75,7 @@
                           <div class="latest-post">
                               <div class="latest-post-media">
                                 <a href="/product/{{rs.id}}/{{rs.slug}}" class="latest-post-img">
-                                    <img loading="lazy" class="img-fluid" src="{{ rs.image.url }}" alt="img">
+                                    <img style="height:300px; width:300px;" loading="lazy" class="img-fluid" src="{{ rs.image.url }}" alt="img">
                                 </a>
                               </div>
                               <div class="post-body">
@@ -134,8 +97,41 @@
                     {% endfor %}
                     </div>
 
-                    <div class="general-btn text-center mt-4">
-                        <a class="btn btn-primary" href="news-left-sidebar.html">See All Posts</a>
+               <div class="row text-center">
+                        <div class="col-12">
+                          <h6 class="section-sub-title">Diğer Seyehat Fırsatları</h6>
+                        </div>
+                  </div>
+        <!--/ Title row end -->
+
+
+                    <div class="row">
+                         {% for rs in randomproducts %}
+                        <div class="col-lg-4 col-md-6 mb-4">
+                          <div class="latest-post">
+                              <div class="latest-post-media">
+                                <a href= "/product/{{rs.id}}/{{rs.slug}}" class="latest-post-img">
+                                    <img style="height:300px; width:300px;" loading="lazy" class="img-fluid" src="{{ rs.image.url }}" alt="img">
+                                </a>
+                              </div>
+                              <div class="post-body">
+                                <h4 class="post-title">
+                                    <a href="news-single.html" class="d-inline-block">{{ rs.title }}</a>
+                                </h4>
+                                <div class="latest-post-meta">
+                                    <span class="post-item-date">
+                                      <i class="fa fa-clock-o"></i> {{ rs.price }}
+                                    </span>
+                                </div>
+                                   <div>
+                                       <button class="icon-btn"><i class="fa fa-heart"></i></button>
+                                       <a href="/reservation/addtocart/{{rs.id}}" class="icon-btn"><i class="fa fa-shopping-cart"></i></a>
+                                   </div>
+                              </div>
+                          </div><!-- Latest post end -->
+                        </div><!-- 1st post col end -->
+                    {% endfor %}
+
                     </div>
              </div>
 

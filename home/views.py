@@ -16,9 +16,9 @@ def index(request):
     setting = Setting.objects.get(pk=1)
     sliderdata= Product.objects.all()[:4]
     category=Category.objects.all()
-    dayproducts=Product.objects.all()[:3]
-    lastproducts=Product.objects.all().order_by('-id')[:3]
-    randomproducts=Product.objects.all().order_by('?')[:3]
+    dayproducts=Product.objects.all()[:6]
+    lastproducts=Product.objects.all().order_by('-id')[:6]
+    randomproducts=Product.objects.all().order_by('?')[:6]
     request.session['cart_items'] = ReservationCart.objects.filter(user_id=current_user.id).count()
 
     context = {'setting': setting,
@@ -32,11 +32,13 @@ def index(request):
     return render(request, 'index.html', context)
 def hakkimizda(request):
     setting = Setting.objects.get(pk=1)
-    context = {'setting': setting, 'page':'hakkimizda'}
+    category = Category.objects.all()
+    context = {'setting': setting, 'category': category, 'page':'hakkimizda'}
     return render(request, 'hakkimizda.html', context)
 def referanslar(request):
     setting = Setting.objects.get(pk=1)
-    context = {'setting': setting, 'page':'referanslar'}
+    category = Category.objects.all()
+    context = {'setting': setting,'category':category, 'page':'referanslar'}
     return render(request, 'referanslarimiz.html', context)
 def iletişim(request):
     if request.method == 'POST':
@@ -52,8 +54,9 @@ def iletişim(request):
             messages.Info(request,'Mesajınız Başarı İle Gönderilmiştir: Teşekkür Ederiz')
             return  HttpResponseRedirect ('/iletişim')
     setting = Setting.objects.get(pk=1)
+    category = Category.objects.all()
     form = ContactForm()
-    context = {'setting': setting, 'form':form}
+    context = {'setting': setting,'category':category, 'form':form}
     return render(request, 'iletişim.html', context)
 
 def category_products(request,id,slug):
@@ -83,7 +86,11 @@ def product_search(request):
         if form.is_valid():
             category=Category.objects.all()
             query=  form.cleaned_data['query']
-            products = Product.objects.filter(title__icontains=query)
+            catid = form.cleaned_data['catid']
+            if catid == 0:
+                products = Product.objects.filter(title__icontains=query)
+            else:
+                products = Product.objects.filter(title__icontains=query,category__id=catid)
             context ={
                 'products':products,
                 'category':category,
@@ -94,7 +101,7 @@ def product_search(request):
 def search_places(request):
   if request.is_ajax():
     q = request.GET.get('term', '')
-    places = Product.objects.filter(city__icontains=q)
+    places = Product.objects.filter(title__icontains=q)
     results = []
     for rs in places:
       place_json = {}

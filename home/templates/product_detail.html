@@ -12,25 +12,29 @@
     {% include 'header.html' %}
 {% endblock %}
 
-
 {% block content %}
-  <div class="banner-text" >
+<div id="banner-area"  style="background-color:#23282d; height:40px!important;position:relative; color:fff;background-size:cover;background-position:50% 50%;">
+  <div class="banner-text">
+          <div class="col-lg-12">
+              <div class="banner-heading">
                 <nav aria-label="breadcrumb">
-                    <ol class="breadcrumb justify-content-right">
+                    <ol class="breadcrumb justify-content-center">
                       <li class="breadcrumb-item"><a href="#">Home</a></li>
-                      <li class="breadcrumb-item"><a href="/category/{{ product.category_id}}/{{ product.category.slug}}">{{ product.category }} </a></li>
+                       <li class="breadcrumb-item"><a href="/category/{{ product.category_id}}/{{ product.category.slug}}">{{ product.category }} </a></li>
                       <li class="breadcrumb-item active" aria-current="page">{{ product.title }} </li>
                     </ol>
                 </nav>
+              </div>
+          </div><!-- Col end -->
   </div><!-- Banner text end -->
-        <div class="section">
-     <div class="container">
-         <div class="row">
-             <section id="main-container" class="main-container">
-  <div class="container">
-    <div class="row">
+</div><!-- Banner area end -->
 
-      <div class="col-lg-8 mb-5 mb-lg-0">
+
+    <section id="main-container" class="main-container">
+        <div class="container">
+              <div class="row">
+
+      <div class="col-lg-12 mb-5 mb-lg-0">
 
         <div class="post-content post-single">
           <div class="post-media post-image">
@@ -96,7 +100,7 @@
         </div><!-- post content end -->
 
         <div id="comments" class="comments-area">
-          <h3 class="comments-heading">07 Comments</h3>
+          <h3 class="comments-heading"> Comments</h3>
 
           <ul class="comments-list">
             <li>
@@ -139,24 +143,27 @@
                 </div>
               </div><!-- Col 12 end -->
 
-              <div class="col-md-4">
+              <div class="col-md-12">
                 <div class="form-group">
                  <input class="input" name="subject" id="id_subject" placeholder="Subject"  required>
                 </div>
               </div><!-- Col 4 end -->
-              <div class="col-md-4">
-                <div class="input-rating">
-                  <strong class="text-uppercase">Your Rating</strong>
-                  <div class="stars">
-                    <input type="radio" id="star5" name="rate" value="5"/><label for="star5"></label>
-                    <input type="radio" id="star4" name="rate" value="4"/><label for="star4"></label>
-                    <input type="radio" id="star3" name="rate" value="3"/><label for="star3"></label>
-                    <input type="radio" id="star2" name="rate" value="2"/><label for="star2"></label>
-                    <input type="radio" id="star1" name="rate" value="1"/><label for="star1"></label>
-                  </div>
+              <div class="col-md-12">
+                 <div class="form-group">
+                        <div class="input-rating">
+                            <strong class="text-uppercase">Puanınız:</strong>
+                                <div class="stars">
+                                    <input class="star star-5" id="star5" type="radio" name="rate" value="5" /> <label class="star star-5" for="star5"></label>
+                                    <input class="star star-4" id="star4" type="radio" name="rate" value="4" /> <label class="star star-4" for="star4"></label>
+                                    <input class="star star-3" id="star3" type="radio" name="rate" value="3" /> <label class="star star-3" for="star3"></label>
+                                    <input class="star star-2" id="star2" type="radio" name="rate" value="2" /> <label class="star star-2" for="star2"></label>
+                                    <input class="star star-1" id="star1" type="radio" name="rate" value="1" /> <label class="star star-1" for="star1"></label>
+                                </div>
+                        </div>
+                    </div>
 
-                </div>
               </div>
+
 
             </div><!-- Form row end -->
             <div class="clearfix">
@@ -170,77 +177,9 @@
         </div><!-- Comments form end -->
       </div><!-- Content Col end -->
 
-      <div class="col-lg-4">
-
-        <div class="sidebar sidebar-right">
-          <div class="widget recent-posts">
-            <h3 class="widget-title">Recent Posts</h3>
-            <ul class="list-unstyled">
-
-              <li class="d-flex align-items-center">
-                {% for rs in images %}
-                <div class="posts-thumb">
-                  <a href="#"><img  src="{{rs.image.url}}"></a>
-                </div>
-                <div class="post-info">
-                  <h4 class="entry-title">
-                    <a href="#">We Just Completes $17.6 Million Medical Clinic In Mid-missouri</a>
-                  </h4>
-                </div>
-                   {% endfor %}
-              </li><!-- 1st post end-->
-
-
-            </ul>
-
-          </div><!-- Recent post end -->
-
-          <div class="widget">
-            <h3 class="widget-title">Categories</h3>
-            <ul class="arrow nav nav-tabs">
-              <li><a href="#">Construction</a></li>
-              <li><a href="#">Commercial</a></li>
-              <li><a href="#">Building</a></li>
-              <li><a href="#">Safety</a></li>
-              <li><a href="#">Structure</a></li>
-            </ul>
-          </div><!-- Categories end -->
-
-          <div class="widget">
-            <h3 class="widget-title">Archives </h3>
-            <ul class="arrow nav nav-tabs">
-              <li><a href="#">Feburay 2016</a></li>
-              <li><a href="#">January 2016</a></li>
-              <li><a href="#">December 2015</a></li>
-              <li><a href="#">November 2015</a></li>
-              <li><a href="#">October 2015</a></li>
-            </ul>
-          </div><!-- Archives end -->
-
-          <div class="widget widget-tags">
-            <h3 class="widget-title">Tags </h3>
-
-            <ul class="list-unstyled">
-              <li><a href="#">Construction</a></li>
-              <li><a href="#">Design</a></li>
-              <li><a href="#">Project</a></li>
-              <li><a href="#">Building</a></li>
-              <li><a href="#">Finance</a></li>
-              <li><a href="#">Safety</a></li>
-              <li><a href="#">Contracting</a></li>
-              <li><a href="#">Planning</a></li>
-            </ul>
-          </div><!-- Tags end -->
-
-
-        </div><!-- Sidebar end -->
-      </div><!-- Sidebar Col end -->
-
     </div><!-- Main row end -->
 
-  </div><!-- Conatiner end -->
-</section><!-- Main container end -->
-         </div>
-     </div>
- </div>
+        </div><!-- Conatiner end -->
+    </section><!-- Main container end -->
+
 {% endblock %}
