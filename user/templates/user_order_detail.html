@@ -40,36 +40,36 @@
                          <table style="width:100%">
 
                               <tr>
-                                <th>Name Surname</th>
-                                <td>{{user}}</td>
+                                <th>Name</th>
+                                <td>{{order.first_name}}</td>
+                              </tr>
+                               <tr>
+                                <th>Surname</th>
+                                <td>{{order.last_name}}</td>
                               </tr>
                               <tr>
                                 <th>Phone</th>
-                                <td>{{user.phone}}</td>
+                                <td>{{order.phone}}</td>
                               </tr>
                               <tr>
                                   <th>Address</th>
-                                  <td>{{rezervation.address}}</td>
+                                  <td>{{order.address}}</td>
                               </tr>
                               <tr>
                                   <th>City</th>
-                                  <td>{{reservation.city}}</td>
+                                  <td>{{order.city}}</td>
                               </tr>
                               <tr>
-                                <th>Country</th>
-                                <td>{{rezervations.country}}</td>
-                             </tr>
-                              <tr>
                                 <th>Status</th>
-                                <td>{{reservations.status}}</td>
+                                <td>{{order.status}}</td>
                              </tr>
                               <tr>
-                                <th>Country</th>
-                                <td>{{rezervation.create_at}}</td>
+                                <th>Created At</th>
+                                <td>{{order.create_at}}</td>
                              </tr>
                               <tr>
                                 <th>Shipping</th>
-                                <td>{{rezervation.adminote}}</td>
+                                <td>{{order.adminote}}</td>
                              </tr>
                         </table>
                      <h3 class="title">  User Order List</h3>
