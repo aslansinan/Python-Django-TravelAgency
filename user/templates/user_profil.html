@@ -37,7 +37,7 @@
                 </div>
                <div class="col-md-9">
                   <div class="section-title">
-                 <h3 class="title">  User Information</h3>
+                 <h3 class="widget-title">  User Information</h3>
                  </div>
                    <table style="width:100%">
 
@@ -47,9 +47,11 @@
                                <a href="/user/update" class="btn btn-primary">Update Profile</a>
                                <a href="/user/password" class="btn btn-primary">Change Password</a>
                           </th>
-                          <th style="height:100px; width:100px;"> </th>
-                          <td  style="height:100px; width:100px;"><img  style="height:80px; width:80px;" src="{{profile.image.url}}"> </td>
                       </tr>
+                       <tr>
+                           <th style="height:100px; width:100px;"> </th>
+                          <td  style="height:100px; width:100px;"><img  style="height:80px; width:80px;" src="{{profile.image.url}}"> </td>
+                       </tr>
                       <tr>
                         <th>Name Surname</th>
                         <td>{{profile.user}}</td>
