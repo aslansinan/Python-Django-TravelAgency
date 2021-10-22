@@ -1,0 +1,31 @@
+{% extends "admin/base_site.html" %}
+
+
+{% block content_title %}
+    <h1><b>Product Adı : {{product.title}}</b></h1>
+
+{% endblock %}
+{% block content %}
+
+  <table>
+  <tr>
+    <th>Ürün İsmi</th>
+    <th>Ürün Kategorisi</th>
+    <th>Ürün Kategori Başlığı</th>
+    <th>Ürün Kategori Açıklaması</th>
+    <th>Ürün Açıklaması</th>
+    <th>Ürün Fiyatı</th>
+    <th>Ürün Resmi</th>
+  </tr>
+  <tr>
+    <td>{{product.title}}</td>
+    <td>{{product.category}}</td>
+    <td>{{product.category.title}}</td>
+    <td>{{product.category.description}}</td>
+    <td>{{product.description}}</td>
+    <td>{{product.price}}</td>
+    <td>{{product.image_tag}}</td>
+  </tr>
+</table>
+
+{% endblock %}

@@ -18,6 +18,7 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path , include
 from home import views
+from product.admin_views import get_reports, reports
 from reservation import views as reservationviews
 urlpatterns = [
     path('', include('home.urls')),
@@ -39,6 +40,8 @@ urlpatterns = [
     path('faq/', views.faq, name='faq'),
     path('signup/', views.signup_view, name='signup_view'),
     path('reservationcart/', reservationviews.reservationcart, name='reservationcart'),
+    path('admin/product/get_reports/<int:pk>/',get_reports,name='custom_get_reports'),
+    path('admin/reports/<int:pk>/',reports,name='custom_reports'),
 ]
 if settings.DEBUG: #new
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

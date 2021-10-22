@@ -1,0 +1,6 @@
+{% extends 'admin/change_form.html' %}
+{% block form_top %}
+<h1>Blog Model için change_form değişti<hr>ürüne ait bilgileri  raporla
+<a href="{% url 'custom_get_reports' pk=original.pk %}" style="color:red;">Buradan</a> </h1>
+
+{% endblock %}

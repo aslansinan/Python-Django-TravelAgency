@@ -95,7 +95,7 @@ class Comment(models.Model):
         ('True', 'Evet'),
         ('False', 'Hayır')
     )
-    product = models.ForeignKey(Product,on_delete=models.CASCADE)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
     user = models.ForeignKey(User,on_delete=models.CASCADE)
     subject = models.CharField(max_length=255,blank=True)
     comment = models.TextField(max_length=255, blank=True)
